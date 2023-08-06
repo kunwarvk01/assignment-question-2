@@ -19,16 +19,16 @@ function handleOverlapsAndNestedPositions(plainTextPositions) {
 
 function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
   // checking for invalid inputs
-  // if (
-  //   !htmlContent ||
-  //   !plainText ||
-  //   !plainTextPositions ||
-  //   plainTextPositions.length == 0 ||
-  //   !isNaN(htmlContent) ||
-  //   !isNaN(plainText)
-  // ) {
-  //   return htmlContent;
-  // }
+  if (
+    !htmlContent ||
+    !plainText ||
+    !plainTextPositions ||
+    plainTextPositions.length == 0 ||
+    !isNaN(htmlContent) ||
+    !isNaN(plainText)
+  ) {
+    return htmlContent;
+  }
 
   const openingTag = "<mark>";
   const closingTag = "</mark>";
@@ -51,7 +51,10 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
         }
       }
     } else if (z < resolvedPositions.length) {
-      if (htmlContent[i - 2] == "r" && htmlContent[i - 3] == "b") j++;
+      if (htmlContent[i - 3] == "b" && htmlContent[i - 2] == "r") j++;
+      if (htmlContent[i - 3] == "/" && htmlContent[i - 2] == "a") j++;
+      if (htmlContent[i - 3] == "m" && htmlContent[i - 2] == "g") j++;
+
       if (j == resolvedPositions[z].start && htmlContent[i] === plainText[j]) {
         outputHTML += openingTag;
       }
