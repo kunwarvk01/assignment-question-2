@@ -50,13 +50,13 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
     j++;
   }
 
-  console.log(newIndex);
+  // console.log(newIndex);
 
   // process plainTextPositions to handle overlaps and nested positions
   const resolvedPositions =
     handleOverlapsAndNestedPositions(plainTextPositions);
 
-  console.log(resolvedPositions);
+  // console.log(resolvedPositions);
 
   // funtion to replace string with added mark tags
   function replaceRange(s, start, end, substitute) {
@@ -83,14 +83,14 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
       position.end - position.start
     );
 
-    console.log(newIndex[position.start] + offset);
-    console.log(position.end - position.start);
+    // console.log(newIndex[position.start] + offset);
+    // console.log(position.end - position.start);
 
-    console.log("highlight before = " + highlight);
+    // console.log("highlight before = " + highlight);
     highlight = openingTag + highlight + closingTag;
-    console.log("highlight after = " + highlight);
+    // console.log("highlight after = " + highlight);
 
-    console.log("outputHTML = " + outputHTML);
+    // console.log("outputHTML = " + outputHTML);
 
     outputHTML = replaceRange(
       outputHTML,
@@ -99,22 +99,22 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
       highlight
     );
 
-    console.log(
-      "replaceRange = " +
-        newIndex[position.start] +
-        " " +
-        offset +
-        "   " +
-        newIndex[position.end] +
-        " " +
-        offset
-    );
+    // console.log(
+    //   "replaceRange = " +
+    //     newIndex[position.start] +
+    //     " " +
+    //     offset +
+    //     "   " +
+    //     newIndex[position.end] +
+    //     " " +
+    //     offset
+    // );
 
-    console.log("outputHTML = " + outputHTML);
-    console.log(" ");
+    // console.log("outputHTML = " + outputHTML);
+    // console.log(" ");
     offset += 13;
   });
-
+  console.log("outputHTML = " + outputHTML);
   return outputHTML;
 }
 // // <div><p><mark>HTML</mark></p><span>HTML</span></div><div><p>HTML</p><span>HTML</span></div>
