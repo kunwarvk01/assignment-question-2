@@ -18,6 +18,7 @@ function handleOverlapsAndNestedPositions(plainTextPositions) {
 }
 
 function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
+  // checking for invalid inputs
   if (
     !htmlContent ||
     !plainText ||
@@ -41,17 +42,15 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
 
   while (i < htmlContent.length) {
     if (
-      z < plainTextPositions.length &&
-      plainTextPositions[z].start == j &&
+      z < resolvedPositions.length &&
+      resolvedPositions[z].start == j &&
       htmlContent[i] == plainText[j]
     )
       outputHTML += openingTag;
 
-    // console.log("open" + outputHTML);
-
     outputHTML += htmlContent[i];
 
-    if (z < plainTextPositions.length && plainTextPositions[z].end == j + 1) {
+    if (z < resolvedPositions.length && resolvedPositions[z].end == j + 1) {
       outputHTML += closingTag;
       z++;
     }
@@ -59,6 +58,7 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
     if (htmlContent[i] === plainText[j]) j++;
     i++;
   }
+
   return outputHTML;
 }
 
