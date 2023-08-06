@@ -77,7 +77,7 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
 
     i++;
   }
-
+  console.log(outputHTML);
   return outputHTML;
 }
 
