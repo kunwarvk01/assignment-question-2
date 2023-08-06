@@ -40,9 +40,9 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
   let i = 0;
   let j = 0;
   while (j < htmlContent.length) {
-    if (htmlContent.charAt(j) === "<") {
+    if (htmlContent.charAt(j) === "<")
       while (htmlContent.charAt(j) !== ">") j++;
-    }
+
     if (htmlContent.charAt(j) === plainText.charAt(i)) {
       newIndex.push(j);
       i++;
@@ -109,8 +109,9 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
         " " +
         offset
     );
-    console.log("outputHTML = " + outputHTML);
 
+    console.log("outputHTML = " + outputHTML);
+    console.log(" ");
     offset += 13;
   });
 
