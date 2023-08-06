@@ -80,7 +80,7 @@ describe("highlightHTMLContent", () => {
   });
 
   // handling invalid positions
-  it("should handle no matches", () => {
+  it("should handle invalid positions", () => {
     const htmlContent = "<p>HTML content</p>";
     const plainText = "HTML content";
     const plainTextPositions = [{ start: 13, end: 25 }];
