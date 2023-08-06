@@ -1,9 +1,8 @@
-# Completed Assignment ☑️
+# Completed Assignment ☑️ `npm test`
 
 - Hosted Link = https://assignment-question-2.vercel.app/
 
-## Testcases : The Following TestCases have been added and checked
-## `npm test`
+## Jest : The Following TestCases have been added and checked
 
 1.  Handling empty inputs. ✔️
 2.  Handling invalid inputs. ✔️
