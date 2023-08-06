@@ -46,7 +46,7 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
         outputHTML += htmlContent[i];
         i++;
         if (htmlContent[i] == ">") {
-          outputHTML += htmlContent[i]; // Add the closing angle bracket to the output
+          outputHTML += htmlContent[i];
           break;
         }
       }
@@ -66,6 +66,9 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
         z++;
       }
 
+      j++;
+    } else {
+      outputHTML += htmlContent[i];
       j++;
     }
 
