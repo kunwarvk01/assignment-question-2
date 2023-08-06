@@ -13,5 +13,5 @@
 7.  Handling nested positions. ✔️
 8.  Handling complex HTML structure. ✔️
 9.  Handling really long HTMLContent. ✔️
-10. Handing custom user inputs. ✔️
+10. Handing the given sample test case ✔️
 
