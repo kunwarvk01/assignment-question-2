@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Function Demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      mark {
+        background-color: yellow;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <h1 class="text-center mb-4">
+        Function Demo
+        <button class="btn btn-primary" onclick="runAllTestCases()">
+          Run All Test Cases
+        </button>
+      </h1>
+
+      <div class="row">
+        <!-- Test Case 1: Handling empty input -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">Test Case 1: Handling empty input</h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-1" class="form-control" rows="1">
+&lt;p&gt;HTML content&lt;/p&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-1"
+                class="form-control"
+                value=""
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-1"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 0, "end": 12 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(1)">
+                Highlight
+              </button>
+              <div class="output" id="output-1"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 2: Handling invalid inputs -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">Test Case 2: Handling invalid inputs</h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-2" class="form-control" rows="1">
+123</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-2"
+                class="form-control"
+                value="000"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-2"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": -1, "end": -1 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(2)">
+                Highlight
+              </button>
+              <div class="output" id="output-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 3: Index beyond length -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">Test Case 3: Index beyond length</h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-3" class="form-control" rows="1">
+&lt;p&gt;HTML content&lt;/p&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-3"
+                class="form-control"
+                value="HTML content"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-3"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 13, "end": 25 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(3)">
+                Highlight
+              </button>
+              <div class="output" id="output-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 4: Handling single position -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">Test Case 4: Handling single position</h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-4" class="form-control" rows="1">
+&lt;p&gt;HTML content&lt;/p&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-4"
+                class="form-control"
+                value="HTML content"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-4"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 0, "end": 4 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(4)">
+                Highlight
+              </button>
+              <div class="output" id="output-4"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 5: Handling multiple positions -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                Test Case 5: Handling multiple positions
+              </h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-5" class="form-control" rows="1">
+&lt;p&gt;HTML content&lt;/p&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-5"
+                class="form-control"
+                value="HTML content"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-5"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 0, "end": 4 }, { "start": 5, "end": 12 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(5)">
+                Highlight
+              </button>
+              <div class="output" id="output-5"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 6: Handling overlapping positions -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                Test Case 6: Handling overlapping positions
+              </h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-6" class="form-control" rows="1">
+&lt;p&gt;HTML content&lt;/p&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-6"
+                class="form-control"
+                value="HTML content"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-6"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 0, "end": 4 }, { "start": 1, "end": 12 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(6)">
+                Highlight
+              </button>
+              <div class="output" id="output-6"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 7: Handling nested positions -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                Test Case 7: : Handling nested positions
+              </h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-7" class="form-control" rows="1">
+&lt;p&gt;HTML content&lt;/p&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-7"
+                class="form-control"
+                value="HTML content"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-7"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 0, "end": 12 }, { "start": 5, "end": 10 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(7)">
+                Highlight
+              </button>
+              <div class="output" id="output-7"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Case 8: Handling complex HTML structure -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                Test Case 8: Handling complex HTML structure
+              </h3>
+            </div>
+            <div class="card-body">
+              <p>HTML content:</p>
+              <textarea id="input-html-8" class="form-control" rows="2">
+&lt;div&gt;&lt;p&gt;HTML content&lt;/p&gt;&lt;span&gt; HTML&lt;/span&gt;&lt;/div&gt;</textarea
+              >
+              <p>Plain Text:</p>
+              <input
+                type="text"
+                id="input-plainText-8"
+                class="form-control"
+                value="HTML content HTML"
+              />
+              <p>Plain Text Positions:</p>
+              <textarea
+                id="input-plainTextPositions-8"
+                class="form-control"
+                rows="1"
+              >
+[{ "start": 0, "end": 4 }, { "start": 13, "end": 17 }]</textarea
+              >
+              <br />
+              <button class="btn btn-primary" onclick="runFunction(8)">
+                Highlight
+              </button>
+              <div class="output" id="output-8"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="./bruteforce.js"></script>
+    <script>
+      function runFunction(testCaseNumber) {
+        const htmlContent = document.getElementById(
+          `input-html-${testCaseNumber}`
+        ).value;
+        const plainText = document.getElementById(
+          `input-plainText-${testCaseNumber}`
+        ).value;
+        const plainTextPositionsStr = document.getElementById(
+          `input-plainTextPositions-${testCaseNumber}`
+        ).value;
+
+        try {
+          const plainTextPositions = JSON.parse(plainTextPositionsStr);
+          const output = highlightHTMLContent(
+            htmlContent,
+            plainText,
+            plainTextPositions
+          );
+          renderOutput(testCaseNumber, output);
+        } catch (error) {
+          console.error(error);
+          renderOutput(testCaseNumber, "Error: Invalid input!");
+        }
+      }
+
+      function renderOutput(testCaseNumber, output) {
+        const outputDiv = document.getElementById(`output-${testCaseNumber}`);
+        outputDiv.innerHTML = `<p class="mt-1"><strong>Output:</strong></p><pre>${output}</pre>`;
+      }
+
+      function runAllTestCases() {
+        runFunction(1);
+        runFunction(2);
+        runFunction(3);
+        runFunction(4);
+        runFunction(5);
+        runFunction(6);
+        runFunction(7);
+        runFunction(8);
+      }
+    </script>
+  </body>
+</html>
