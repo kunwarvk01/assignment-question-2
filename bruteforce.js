@@ -10,7 +10,7 @@ function handleOverlapsAndNestedPositions(plainTextPositions) {
       updatedPositions.push({ ...position });
       i++;
     } else if (position.end > updatedPositions[i].end) {
-      // overlapping or nested position, update the previous position end if needed
+      // overlapping or nested position, update the previous position.end if needed
       updatedPositions[i].end = position.end;
     }
   }
