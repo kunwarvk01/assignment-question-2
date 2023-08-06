@@ -83,31 +83,52 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
       position.end - position.start
     );
 
+    console.log(newIndex[position.start] + offset);
+    console.log(position.end - position.start);
+
     console.log("highlight before = " + highlight);
     highlight = openingTag + highlight + closingTag;
     console.log("highlight after = " + highlight);
 
-    outputHTML =
-      position.end === plainText.length
-        ? replaceRange(
-            outputHTML,
-            newIndex[position.start] + offset,
-            newIndex[position.end - 1] + offset + 1,
-            highlight
-          )
-        : replaceRange(
-            outputHTML,
-            newIndex[position.start] + offset,
-            newIndex[position.end] + offset,
-            highlight
-          );
+    console.log("outputHTML = " + outputHTML);
+
+    outputHTML = replaceRange(
+      outputHTML,
+      newIndex[position.start] + offset,
+      newIndex[position.end - 1] + offset + 1,
+      highlight
+    );
+
+    console.log(
+      "replaceRange = " +
+        newIndex[position.start] +
+        " " +
+        offset +
+        "   " +
+        newIndex[position.end] +
+        " " +
+        offset
+    );
+    console.log("outputHTML = " + outputHTML);
 
     offset += 13;
-    console.log(offset);
   });
 
   return outputHTML;
 }
+// // <div><p><mark>HTML</mark></p><span>HTML</span></div><div><p>HTML</p><span>HTML</span></div>
+// console.log(
+//   highlightHTMLContent(
+//     "<div><p>HTML</p><span>HTML</span></div><div><p>HTML</p><span>HTML</span></div>",
+//     "HTMLHTMLHTMLHTML",
+//     [
+//       { start: 0, end: 4 },
+//       { start: 4, end: 8 },
+//       { start: 8, end: 12 },
+//       { start: 12, end: 16 },
+//     ]
+//   )
+// );
 
 // console.log(
 //   highlightHTMLContent("<p>HTML content</p>", "HTML content", [
@@ -140,19 +161,6 @@ function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
 //     ]
 //   )
 // );
-
-console.log(
-  highlightHTMLContent(
-    "<div><p>HTML content</p><span> HTML</span></div><div><p>HTML content</p><span> HTML</span></div>",
-    "HTML content HTMLHTML content HTML",
-    [
-      { start: 0, end: 4 },
-      { start: 12, end: 17 },
-      { start: 17, end: 21 },
-      { start: 30, end: 34 },
-    ]
-  )
-);
 
 // console.log(
 //   highlightHTMLContent(
