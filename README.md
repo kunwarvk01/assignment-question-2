@@ -2,7 +2,7 @@
 
 - Hosted Link = https://assignment-question-2.vercel.app/
 
-# Testcases : The Following TestCases have been added and checked
+## Testcases : The Following TestCases have been added and checked
 ## `npm test`
 
 1.  Handling empty inputs. ✔️
